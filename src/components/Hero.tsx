@@ -27,39 +27,13 @@ export function Hero() {
 
             <div className="flex flex-wrap gap-4">
               <Button onClick={scrollToContact} size="lg">
-                <Mail className="mr-2 h-4 w-4" />
+                
                 Get In Touch
-              </Button>
-              <Button variant="outline" size="lg">
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
               </Button>
             </div>
 
             <div className="flex gap-4 pt-4">
-              <a
-                href="https://github.com/Haidersk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 border dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-              >
-                <Github size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/haiderkind3897/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 border dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-              >
-                <Linkedin size={24} />
-              </a>
-              <a
-                href="mailto:contact@example.com"
-                className="p-2 border dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-              >
-                <Mail size={24} />
-              </a>
-            </div>
+              </div>
           </div>
 
           <div className="relative">
@@ -72,7 +46,7 @@ export function Hero() {
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border dark:border-gray-700">
               <div className="text-center">
-                <div className="text-3xl text-blue-600 dark:text-blue-400">5+</div>
+                <div className="text-3xl text-blue-600 dark:text-blue-400">3+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-300">Years Experience</div>
               </div>
             </div>

@@ -8,7 +8,6 @@ export function Footer() {
           <div>
             <div className="text-2xl mb-4">
               <span className="text-blue-400">DevOps</span>
-              <span>Pro</span>
             </div>
             <p className="text-gray-400 dark:text-gray-500">
               Building and optimizing cloud infrastructure for the modern web
@@ -81,8 +80,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 dark:border-gray-900 pt-8 text-center text-gray-400 dark:text-gray-500">
           <p className="flex items-center justify-center gap-2">
-            Made with <Heart size={16} className="text-red-500" /> by DevOps Pro
-            © 2025
+            © 2025 Made with <Heart size={16} className="text-red-500" /> by Haider Shaikh. All Rights Reserved.
           </p>
         </div>
       </div>

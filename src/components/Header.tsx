@@ -21,7 +21,6 @@ export function Header() {
         <nav className="flex items-center justify-between">
           <div className="text-2xl">
             <span className="text-blue-600">DevOps</span>
-            <span className="text-gray-800 dark:text-white">Pro</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -55,7 +54,11 @@ export function Header() {
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+              {theme === "light" ? (
+                <Moon size={20} />
+              ) : (
+                <Sun size={20} />
+              )}
             </button>
             <Button onClick={() => scrollToSection("contact")}>
               Let's Talk
@@ -69,12 +72,18 @@ export function Header() {
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+              {theme === "light" ? (
+                <Moon size={20} />
+              ) : (
+                <Sun size={20} />
+              )}
             </button>
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? (
+                <X size={24} />
+              ) : (
+                <Menu size={24} />
+              )}
             </button>
           </div>
         </nav>
@@ -106,7 +115,10 @@ export function Header() {
             >
               Contact
             </button>
-            <Button onClick={() => scrollToSection("contact")} className="w-full">
+            <Button
+              onClick={() => scrollToSection("contact")}
+              className="w-full"
+            >
               Let's Talk
             </Button>
           </div>
