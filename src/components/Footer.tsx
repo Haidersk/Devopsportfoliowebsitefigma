@@ -7,7 +7,9 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <div className="text-2xl mb-4">
-              <span className="text-blue-400">DevOps</span>
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Haider Shaikh
+              </span>
             </div>
             <p className="text-gray-400 dark:text-gray-500">
               Building and optimizing cloud infrastructure for the modern web

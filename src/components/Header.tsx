@@ -31,9 +31,16 @@ export function Header() {
     >
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          <div className="text-2xl">
-            <span className="text-blue-600">DevOps</span>
-          </div>
+          <motion.button
+            onClick={() => scrollToSection("home")}
+            className="text-2xl cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+              Haider Shaikh
+            </span>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
