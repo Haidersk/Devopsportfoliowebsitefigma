@@ -1,5 +1,6 @@
-import { Card } from "./ui/card";
 import { Brain, Rocket, Users, Code2, GitBranch, Workflow } from "lucide-react";
+import { LiquidGlassCard, LiquidGlass } from "./LiquidGlass";
+import { motion } from "motion/react";
 
 export function About() {
   const uniqueTraits = [
@@ -36,9 +37,15 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-white dark:bg-gray-950">
+    <section id="about" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <p className="text-blue-600 dark:text-blue-400 mb-2">What Sets Me Apart</p>
           <h2 className="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
             Beyond Traditional DevOps
@@ -47,42 +54,63 @@ export function About() {
             I'm not just another DevOps engineer who follows playbooks. I bring a unique blend of deep technical expertise, 
             business acumen, and a passion for building systems that developers love to use.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
           {uniqueTraits.map((trait, index) => (
-            <Card
-              key={index}
-              className="p-6 hover:shadow-lg transition-shadow border-2 border-transparent hover:border-blue-500 dark:hover:border-blue-400"
-            >
+            <LiquidGlassCard key={index} delay={index * 0.1} className="p-6">
               <div className="mb-4">
-                <div className="inline-flex p-3 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+                <motion.div 
+                  className="inline-flex p-3 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-lg"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <trait.icon className="h-6 w-6" />
-                </div>
+                </motion.div>
               </div>
               <h3 className="mb-2 text-gray-900 dark:text-white">{trait.title}</h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                 {trait.description}
               </p>
-            </Card>
+            </LiquidGlassCard>
           ))}
         </div>
 
-        <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-800 border-2 border-blue-200 dark:border-blue-900">
+        <LiquidGlass delay={0.6} className="max-w-4xl mx-auto p-8">
           <div className="text-center">
-            <h3 className="text-2xl mb-4 text-gray-900 dark:text-white">My DevOps Philosophy</h3>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            <motion.h3 
+              className="text-2xl mb-4 text-gray-900 dark:text-white"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              My DevOps Philosophy
+            </motion.h3>
+            <motion.p 
+              className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+            >
               "DevOps isn't about tools - it's about culture, automation, and continuous improvement. 
               I build systems that are reliable, scalable, and maintainable, while fostering a culture 
               where failures are learning opportunities and collaboration is the default."
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            </motion.p>
+            <motion.p 
+              className="text-gray-700 dark:text-gray-300 leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
               My goal is simple: <span className="text-blue-600 dark:text-blue-400">make deployments boring</span>, 
               <span className="text-purple-600 dark:text-purple-400"> incidents rare</span>, and 
               <span className="text-pink-600 dark:text-pink-400"> developer experience exceptional</span>.
-            </p>
+            </motion.p>
           </div>
-        </Card>
+        </LiquidGlass>
       </div>
     </section>
   );

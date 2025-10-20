@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, Heart } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white py-12">
+    <footer className="bg-gray-900/90 dark:bg-black/90 backdrop-blur-md text-white py-12 border-t border-white/10">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>

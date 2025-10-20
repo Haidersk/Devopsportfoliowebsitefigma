@@ -1,8 +1,9 @@
-import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { ExternalLink, GitBranch } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { LiquidGlassCard } from "./LiquidGlass";
+import { motion } from "motion/react";
 
 export function Projects() {
   const projects = [
@@ -33,9 +34,15 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-16 md:py-24 dark:bg-gray-950">
+    <section id="projects" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <p className="text-blue-600 dark:text-blue-400 mb-2">Portfolio</p>
           <h2 className="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
             Featured Projects
@@ -44,40 +51,64 @@ export function Projects() {
             Key projects demonstrating DevOps excellence and cloud infrastructure
             expertise
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden group">
-              <div className="aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            <LiquidGlassCard key={index} delay={index * 0.15} className="overflow-hidden">
+              <div className="aspect-video overflow-hidden bg-gray-100/50 dark:bg-gray-800/50 relative">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <ImageWithFallback
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+                
+                {/* Gradient overlay on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0"
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                 />
               </div>
               <div className="p-6 space-y-4">
                 <h3 className="text-xl dark:text-white">{project.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} variant="outline">
-                      {tag}
-                    </Badge>
+                  {project.tags.map((tag, idx) => (
+                    <motion.div
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    >
+                      <Badge variant="outline">
+                        {tag}
+                      </Badge>
+                    </motion.div>
                   ))}
                 </div>
                 <div className="flex gap-2 pt-2">
-                  <Button variant="outline" size="sm" className="flex-1">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Details
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex-1">
-                    <GitBranch className="h-4 w-4 mr-2" />
-                    Code
-                  </Button>
+                  <motion.div className="flex-1" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button variant="outline" size="sm" className="w-full">
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      Details
+                    </Button>
+                  </motion.div>
+                  <motion.div className="flex-1" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button variant="outline" size="sm" className="w-full">
+                      <GitBranch className="h-4 w-4 mr-2" />
+                      Code
+                    </Button>
+                  </motion.div>
                 </div>
               </div>
-            </Card>
+            </LiquidGlassCard>
           ))}
         </div>
       </div>
