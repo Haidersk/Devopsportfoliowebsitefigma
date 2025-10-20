@@ -12,7 +12,8 @@ export function Footer() {
               </span>
             </div>
             <p className="text-gray-400 dark:text-gray-500">
-              Building and optimizing cloud infrastructure for the modern web
+              Building and optimizing cloud infrastructure for
+              the modern web
             </p>
           </div>
 
@@ -20,7 +21,10 @@ export function Footer() {
             <h4 className="mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-400 dark:text-gray-500">
               <li>
-                <a href="#home" className="hover:text-blue-400 transition-colors">
+                <a
+                  href="#home"
+                  className="hover:text-blue-400 transition-colors"
+                >
                   Home
                 </a>
               </li>
@@ -82,7 +86,9 @@ export function Footer() {
 
         <div className="border-t border-gray-800 dark:border-gray-900 pt-8 text-center text-gray-400 dark:text-gray-500">
           <p className="flex items-center justify-center gap-2">
-            © 2025 Made with <Heart size={16} className="text-red-500" /> by Haider Shaikh. All Rights Reserved.
+            © 2025 Made with{" "}
+            <Heart size={16} className="text-red-500" /> by
+            Haider Shaikh. All Rights Reserved.
           </p>
         </div>
       </div>

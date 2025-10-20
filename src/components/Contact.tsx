@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function Contact() {
   const contactLinks = [
-    { href: "mailto:contact@devops.pro", icon: Mail, label: "Email" },
+    { href: "mailto:haidershaikh2050@gmail.com", icon: Mail, label: "Email" },
     { href: "https://github.com/Haidersk", icon: Github, label: "GitHub", external: true },
     { href: "https://www.linkedin.com/in/haiderkind3897/", icon: Linkedin, label: "LinkedIn", external: true },
     { href: "https://www.google.com/maps/place/Kondhwa,+Pune,+Maharashtra", icon: MapPin, label: "Location", external: true },

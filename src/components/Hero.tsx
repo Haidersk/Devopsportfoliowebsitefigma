@@ -1,4 +1,13 @@
-import { Github, Linkedin, Mail, Download, Terminal, Code, Cpu, Server } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  Terminal,
+  Code,
+  Cpu,
+  Server,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import profileImage from "figma:asset/ab102c8ae3b1e8c540fc805a93a01e7e0434e570.png";
@@ -22,45 +31,55 @@ export function Hero() {
   // Statistics data
   const stats = [
     { value: "3+", label: "Years Experience" },
-    { value: "25+", label: "Projects Deployed" },
-    { value: "99.9%", label: "Uptime" },
+    { value: "5+", label: "Projects Deployed" },
   ];
 
   return (
-    <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden min-h-screen flex items-center">
+    <section
+      id="home"
+      className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden min-h-screen flex items-center"
+    >
       {/* Floating DevOps Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10 dark:opacity-5">
-        {floatingIcons.map(({ Icon, delay, duration, x, y }, index) => (
-          <motion.div
-            key={index}
-            className="absolute"
-            style={{ left: `${x}%`, top: `${y}%` }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ 
-              opacity: [0.3, 0.6, 0.3],
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration,
-              repeat: Infinity,
-              delay,
-              ease: "easeInOut",
-            }}
-          >
-            <Icon size={80} className="text-blue-600 dark:text-blue-400" />
-          </motion.div>
-        ))}
+        {floatingIcons.map(
+          ({ Icon, delay, duration, x, y }, index) => (
+            <motion.div
+              key={index}
+              className="absolute"
+              style={{ left: `${x}%`, top: `${y}%` }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.2, 1],
+                rotate: [0, 180, 360],
+              }}
+              transition={{
+                duration,
+                repeat: Infinity,
+                delay,
+                ease: "easeInOut",
+              }}
+            >
+              <Icon
+                size={80}
+                className="text-blue-600 dark:text-blue-400"
+              />
+            </motion.div>
+          ),
+        )}
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <motion.div 
+          <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{
+              duration: 0.8,
+              ease: [0.25, 0.4, 0.25, 1],
+            }}
           >
             {/* Greeting */}
             <motion.div
@@ -76,7 +95,7 @@ export function Hero() {
 
             {/* Name with Gradient */}
             <div className="space-y-3">
-              <motion.h1 
+              <motion.h1
                 className="text-6xl md:text-7xl lg:text-8xl text-gray-900 dark:text-white tracking-tight leading-none"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -95,7 +114,7 @@ export function Hero() {
               </motion.h1>
 
               {/* Role with gradient */}
-              <motion.h2 
+              <motion.h2
                 className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -106,35 +125,42 @@ export function Hero() {
             </div>
 
             {/* Description */}
-            <motion.p 
+            <motion.p
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Automating infrastructure, optimizing pipelines, and building reliable systems at scale
+              Automating infrastructure, optimizing pipelines,
+              and building reliable systems at scale
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div 
+            <motion.div
               className="flex flex-wrap gap-4 pt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  onClick={scrollToContact} 
-                  size="lg" 
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  onClick={scrollToContact}
+                  size="lg"
                   className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 shadow-lg shadow-blue-500/50 dark:shadow-blue-400/30"
                 >
                   Get In Touch
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  variant="outline"
+                  size="lg"
                   className="text-lg px-8 py-6 border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400"
                 >
                   <Download className="mr-2" size={20} />
@@ -144,22 +170,39 @@ export function Hero() {
             </motion.div>
 
             {/* Social Links */}
-            <motion.div 
+            <motion.div
               className="flex gap-4 pt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
               {[
-                { Icon: Github, href: "https://github.com/haidershaikh" },
-                { Icon: Linkedin, href: "https://linkedin.com/in/haidershaikh" },
-                { Icon: Mail, href: "mailto:haidershaikh2050@gmail.com" },
+                {
+                  Icon: Github,
+                  href: "https://github.com/Haidersk",
+                },
+                {
+                  Icon: Linkedin,
+                  href: "https://www.linkedin.com/in/haiderkind3897/",
+                },
+                {
+                  Icon: Mail,
+                  href: "mailto:haidershaikh2050@gmail.com",
+                },
               ].map(({ Icon, href }, index) => (
                 <motion.a
                   key={index}
                   href={href}
-                  target={href.startsWith("mailto:") ? undefined : "_blank"}
-                  rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  target={
+                    href.startsWith("mailto:")
+                      ? undefined
+                      : "_blank"
+                  }
+                  rel={
+                    href.startsWith("mailto:")
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
                   className="p-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:shadow-lg hover:shadow-blue-500/20"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -171,11 +214,14 @@ export function Hero() {
           </motion.div>
 
           {/* Right Content - Profile Image & Stats */}
-          <motion.div 
+          <motion.div
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{
+              duration: 0.8,
+              ease: [0.25, 0.4, 0.25, 1],
+            }}
           >
             {/* Main Profile Card */}
             <div className="relative">
@@ -194,10 +240,11 @@ export function Hero() {
               />
 
               {/* Image Container */}
-              <motion.div 
+              <motion.div
                 className="relative aspect-square rounded-3xl overflow-hidden"
                 style={{
-                  background: "linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1))",
+                  background:
+                    "linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1))",
                   backdropFilter: "blur(20px)",
                   WebkitBackdropFilter: "blur(20px)",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -210,7 +257,8 @@ export function Hero() {
                 <motion.div
                   className="absolute inset-0 opacity-30"
                   style={{
-                    background: "radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.3), transparent 70%)",
+                    background:
+                      "radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.3), transparent 70%)",
                   }}
                   animate={{
                     scale: [1, 1.5, 1],
@@ -267,25 +315,43 @@ export function Hero() {
                   key={index}
                   className="absolute p-4 rounded-2xl backdrop-blur-xl"
                   style={{
-                    background: "linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7))",
+                    background:
+                      "linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7))",
                     backdropFilter: "blur(20px)",
                     WebkitBackdropFilter: "blur(20px)",
-                    border: "1px solid rgba(255, 255, 255, 0.5)",
+                    border:
+                      "1px solid rgba(255, 255, 255, 0.5)",
                     boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-                    ...(index === 0 && { top: "10%", right: "-10%", }),
-                    ...(index === 1 && { bottom: "40%", left: "-10%", }),
-                    ...(index === 2 && { bottom: "5%", right: "-8%", }),
+                    ...(index === 0 && {
+                      top: "10%",
+                      right: "-10%",
+                    }),
+                    ...(index === 1 && {
+                      bottom: "40%",
+                      left: "-10%",
+                    }),
+                    ...(index === 2 && {
+                      bottom: "5%",
+                      right: "-8%",
+                    }),
                   }}
                   initial={{ opacity: 0, scale: 0.5, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.8 + index * 0.1,
+                  }}
                   whileHover={{ scale: 1.1, y: -5 }}
                 >
                   <div className="text-center min-w-[100px]">
-                    <motion.div 
+                    <motion.div
                       className="text-2xl md:text-3xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
                       animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.3,
+                      }}
                     >
                       {stat.value}
                     </motion.div>
