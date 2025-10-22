@@ -1,4 +1,4 @@
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Square } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { useTheme } from "./ThemeProvider";
@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme, cycleTheme } = useTheme();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -16,9 +16,15 @@ export function Header() {
     }
   };
 
+  const getThemeIcon = () => {
+    if (theme === "light") return <Moon size={20} />;
+    if (theme === "dark") return <Square size={20} />;
+    return <Sun size={20} />;
+  };
+
   return (
     <motion.header 
-      className="fixed top-0 left-0 right-0 z-50 border-b dark:border-gray-800"
+      className="fixed top-0 left-0 right-0 z-50 border-b dark:border-gray-800 bw:border-gray-400"
       style={{
         background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))",
         backdropFilter: "blur(20px)",
@@ -37,7 +43,7 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bw:from-gray-600 bw:via-gray-800 bw:to-black bg-clip-text text-transparent">
               Haider Shaikh
             </span>
           </motion.button>
@@ -46,7 +52,7 @@ export function Header() {
           <div className="hidden md:flex items-center gap-8">
             <motion.button
               onClick={() => scrollToSection("home")}
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="text-gray-600 dark:text-gray-300 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -54,7 +60,7 @@ export function Header() {
             </motion.button>
             <motion.button
               onClick={() => scrollToSection("skills")}
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="text-gray-600 dark:text-gray-300 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -62,7 +68,7 @@ export function Header() {
             </motion.button>
             <motion.button
               onClick={() => scrollToSection("projects")}
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="text-gray-600 dark:text-gray-300 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -70,42 +76,30 @@ export function Header() {
             </motion.button>
             <motion.button
               onClick={() => scrollToSection("contact")}
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="text-gray-600 dark:text-gray-300 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Contact
             </motion.button>
             <motion.button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-colors"
+              onClick={cycleTheme}
+              className="p-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 bw:hover:bg-gray-200/50 transition-colors"
               aria-label="Toggle theme"
               whileHover={{ scale: 1.1, rotate: 180 }}
               whileTap={{ scale: 0.9 }}
               transition={{ duration: 0.3 }}
             >
               <AnimatePresence mode="wait">
-                {theme === "light" ? (
-                  <motion.div
-                    key="moon"
-                    initial={{ rotate: -180, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 180, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Moon size={20} />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="sun"
-                    initial={{ rotate: -180, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 180, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Sun size={20} />
-                  </motion.div>
-                )}
+                <motion.div
+                  key={theme}
+                  initial={{ rotate: -180, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 180, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {getThemeIcon()}
+                </motion.div>
               </AnimatePresence>
             </motion.button>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -118,15 +112,11 @@ export function Header() {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              onClick={cycleTheme}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bw:hover:bg-gray-200 transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === "light" ? (
-                <Moon size={20} />
-              ) : (
-                <Sun size={20} />
-              )}
+              {getThemeIcon()}
             </button>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? (
@@ -150,7 +140,7 @@ export function Header() {
             >
               <motion.button
                 onClick={() => scrollToSection("home")}
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-left"
+                className="text-gray-600 dark:text-gray-300 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-colors text-left"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
@@ -159,7 +149,7 @@ export function Header() {
               </motion.button>
               <motion.button
                 onClick={() => scrollToSection("skills")}
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-left"
+                className="text-gray-600 dark:text-gray-300 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-colors text-left"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.15 }}
@@ -168,7 +158,7 @@ export function Header() {
               </motion.button>
               <motion.button
                 onClick={() => scrollToSection("projects")}
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-left"
+                className="text-gray-600 dark:text-gray-300 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-colors text-left"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
@@ -177,7 +167,7 @@ export function Header() {
               </motion.button>
               <motion.button
                 onClick={() => scrollToSection("contact")}
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-left"
+                className="text-gray-600 dark:text-gray-300 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-colors text-left"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.25 }}

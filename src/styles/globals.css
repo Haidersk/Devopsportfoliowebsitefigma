@@ -1,4 +1,5 @@
 @custom-variant dark (&:is(.dark *));
+@custom-variant bw (&:is(.bw *));
 
 :root {
   --font-size: 16px;
@@ -76,6 +77,46 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+}
+
+.bw {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #000000;
+  --muted: #e5e5e5;
+  --muted-foreground: #525252;
+  --accent: #e5e5e5;
+  --accent-foreground: #000000;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.2);
+  --input: transparent;
+  --input-background: #f5f5f5;
+  --switch-background: #d4d4d4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #737373;
+  --chart-1: #171717;
+  --chart-2: #404040;
+  --chart-3: #525252;
+  --chart-4: #737373;
+  --chart-5: #a3a3a3;
+  --radius: 0.625rem;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #000000;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #737373;
 }
 
 @theme inline {
