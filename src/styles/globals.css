@@ -1,5 +1,4 @@
 @custom-variant dark (&:is(.dark *));
-@custom-variant blackwhite (&:is(.blackwhite *));
 
 :root {
   --font-size: 16px;
@@ -42,82 +41,115 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+/* ---------- DARK MODE CARD TRANSPARENCY + WHITE TEXT (FIXED) ---------- */
+
+/*
+  --- FIX 1: OPAQUE FALLBACK ---
+  This provides a solid, 95% opaque background for older browsers
+  or those that don't support backdrop-filter. This ensures
+  legibility for ALL users, which is the primary accessibility fix.[3, 4]
+*/
+.dark.card,
+.dark.card-section,
+.dark.feature-card {
+  background: rgba(35, 37, 38, 0.95)!important; /* Dark, 95% opaque fallback */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff!important;
+  transition: all 0.3s ease-in-out; /* keeps existing hover animations smooth */
 }
 
-.blackwhite {
-  --background: #ffffff;
-  --foreground: #000000;
-  --card: #ffffff;
-  --card-foreground: #000000;
-  --popover: #ffffff;
-  --popover-foreground: #000000;
-  --primary: #000000;
-  --primary-foreground: #ffffff;
-  --secondary: #f5f5f5;
-  --secondary-foreground: #000000;
-  --muted: #e5e5e5;
-  --muted-foreground: #525252;
-  --accent: #e5e5e5;
-  --accent-foreground: #000000;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.2);
-  --input: transparent;
-  --input-background: #f5f5f5;
-  --switch-background: #d4d4d4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: #737373;
-  --chart-1: #171717;
-  --chart-2: #404040;
-  --chart-3: #525252;
-  --chart-4: #737373;
-  --chart-5: #a3a3a3;
-  --radius: 0.625rem;
-  --sidebar: #fafafa;
-  --sidebar-foreground: #000000;
-  --sidebar-primary: #000000;
-  --sidebar-primary-foreground: #fafafa;
-  --sidebar-accent: #f5f5f5;
-  --sidebar-accent-foreground: #171717;
-  --sidebar-border: #e5e5e5;
-  --sidebar-ring: #737373;
+/*
+  --- FIX 2: PROGRESSIVE ENHANCEMENT (@supports) ---
+  This rule block applies the "glass" effect ONLY to modern
+  browsers that can render it.[3]
+*/
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+ .dark.card,
+ .dark.card-section,
+ .dark.feature-card {
+    /* --- FIX 3: TUNED GLASS PROPERTIES --- */
+    
+    /* Increased background opacity to provide a stabler platform for text */
+    background: rgba(42, 44, 45, 0.4)!important; /* Was 0.25 */
+    
+    /* Increased blur to "smear" the complex background, neutralizing variable contrast [5, 6] */
+    backdrop-filter: blur(16px) saturate(180%)!important; /* Was 10px */
+    -webkit-backdrop-filter: blur(16px) saturate(180%)!important;
+  }
 }
+
+/*
+  --- FIX 4: PERCEPTUAL CONTRAST (text-shadow) ---
+  This adds a subtle, dark shadow to text elements inside the cards.
+  This makes the white text "pop" and remain readable even
+  as the background animates.[7, 8, 9, 10]
+*/
+.dark.card p,
+.dark.card h1,
+.dark.card h2,
+.dark.card h3,
+.dark.card h4,
+.dark.card li,
+.dark.feature-card p,
+.dark.feature-card h1,
+.dark.feature-card h2,
+.dark.feature-card h3,
+.dark.feature-card h4,
+.dark.feature-card li,
+.dark.card-section p,
+.dark.card-section h1,
+.dark.card-section h2,
+.dark.card-section h3,
+.dark.card-section h4,
+.dark.card-section li {
+  /* A 1px shadow, offset 1px down/right, with 4px blur, and 50% opacity black */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/*
+  --- FIX 5: REMOVED PROBLEMATIC RULE ---
+  The global "star" rule below was removed. It was a "sledgehammer" 
+  forcing all child elements (like icons) to be white. 
+  The text-shadow above is a more surgical and effective fix.
+*/
+/*
+.dark.card *,
+.dark.card-section *,
+.dark.feature-card * {
+  color: #ffffff!important;
+  mix-blend-mode: normal!important;
+}
+*/
+
+/* headings & section titles */
+.dark h2,
+.dark h3,
+.dark.section-title {
+  color: #ffffff!important;
+  /* 
+    Optional: You may want to add text-shadow here too 
+    if these titles appear over the complex background.
+  */
+  /* text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); */
+}
+
+/* subtle hover lighting without changing motion */
+.dark.card:hover,
+.dark.feature-card:hover {
+  background: rgba(255, 255, 255, 0.1)!important;
+  transform: scale(1.02);
+}
+
+/* icons keep color and clarity */
+.dark.card svg,
+.dark.feature-card svg {
+  mix-blend-mode: normal!important;
+  filter: none!important;
+  opacity: 1!important;
+}
+
+
+
 
 @theme inline {
   --color-background: var(--background);

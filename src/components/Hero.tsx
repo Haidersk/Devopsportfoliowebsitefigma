@@ -40,10 +40,10 @@ export function Hero() {
       className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden min-h-screen flex items-center"
     >
       {/* Gradient Background Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-pink-900/20 bw:from-white bw:via-gray-50 bw:to-white pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-[#232526] dark:via-[#2d2f30] dark:to-[#414345] pointer-events-none" />
 
       {/* Floating DevOps Icons */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10 dark:opacity-5 bw:opacity-5">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10 dark:opacity-5">
         {floatingIcons.map(
           ({ Icon, delay, duration, x, y }, index) => (
             <motion.div
@@ -65,7 +65,7 @@ export function Hero() {
             >
               <Icon
                 size={80}
-                className="text-blue-600 dark:text-blue-400 bw:text-gray-700"
+                className="text-blue-600 dark:text-blue-400"
               />
             </motion.div>
           ),
@@ -74,7 +74,7 @@ export function Hero() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
+          {/* Left Content (This part was mostly correct) */}
           <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: -50 }}
@@ -84,6 +84,8 @@ export function Hero() {
               ease: [0.25, 0.4, 0.25, 1],
             }}
           >
+
+            
             {/* Greeting */}
             <motion.div
               className="inline-block"
@@ -91,7 +93,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <span className="text-lg md:text-xl text-gray-600 dark:text-gray-400 bw:text-gray-700 tracking-wide">
+              <span className="text-lg md:text-xl text-gray-600 dark:text-gray-400 tracking-wide">
                 Hello, I'm
               </span>
             </motion.div>
@@ -99,7 +101,7 @@ export function Hero() {
             {/* Name with Gradient */}
             <div className="space-y-3">
               <motion.h1
-                className="text-6xl md:text-7xl lg:text-8xl text-gray-900 dark:text-white bw:text-black tracking-tight leading-none"
+                className="text-6xl md:text-7xl lg:text-8xl text-gray-900 dark:text-white tracking-tight leading-none"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -108,7 +110,7 @@ export function Hero() {
                   Haider Shaikh
                   {/* Animated underline */}
                   <motion.span
-                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bw:from-gray-700 bw:via-gray-800 bw:to-black"
+                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400"
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 0.8, delay: 0.8 }}
@@ -118,7 +120,7 @@ export function Hero() {
 
               {/* Role with gradient */}
               <motion.h2
-                className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bw:from-gray-700 bw:via-gray-800 bw:to-black bg-clip-text text-transparent"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -129,7 +131,7 @@ export function Hero() {
 
             {/* Description */}
             <motion.p
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 bw:text-gray-700 leading-relaxed max-w-2xl"
+              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -152,7 +154,7 @@ export function Hero() {
                 <Button
                   onClick={scrollToContact}
                   size="lg"
-                  className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 bw:from-gray-800 bw:to-black bw:hover:from-gray-700 bw:hover:to-gray-800 shadow-lg shadow-blue-500/50 dark:shadow-blue-400/30 bw:shadow-gray-500/50"
+                  className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 shadow-lg shadow-blue-500/50 dark:shadow-blue-400/30"
                 >
                   Get In Touch
                 </Button>
@@ -164,7 +166,7 @@ export function Hero() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-lg px-8 py-6 border-2 border-gray-300 dark:border-gray-700 bw:border-gray-400 hover:border-blue-600 dark:hover:border-blue-400 bw:hover:border-black hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black bg-white/80 dark:bg-gray-900/80 bw:bg-white/90 backdrop-blur-sm"
+                  className="text-lg px-8 py-6 border-2 border-gray-400 dark:border-gray-500 hover:border-blue-600 dark:hover:border-blue-400 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 bg-white/90 dark:bg-white/10 backdrop-blur-sm"
                 >
                   <Download className="mr-2" size={20} />
                   Download CV
@@ -206,7 +208,7 @@ export function Hero() {
                       ? undefined
                       : "noopener noreferrer"
                   }
-                  className="p-3 rounded-xl bg-white/80 dark:bg-gray-900/80 bw:bg-white/90 backdrop-blur-sm border border-gray-300 dark:border-gray-700 bw:border-gray-400 hover:border-blue-600 dark:hover:border-blue-400 bw:hover:border-black text-gray-600 dark:text-gray-400 bw:text-gray-700 hover:text-blue-600 dark:hover:text-blue-400 bw:hover:text-black transition-all hover:shadow-lg hover:shadow-blue-500/20 bw:hover:shadow-gray-500/20"
+                  className="p-3 rounded-xl bg-white/80 dark:bg-[#232526]/80 backdrop-blur-sm border border-gray-300 dark:border-[#414345] hover:border-blue-600 dark:hover:border-blue-400 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:shadow-lg hover:shadow-blue-500/20"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -214,6 +216,7 @@ export function Hero() {
                 </motion.a>
               ))}
             </motion.div>
+            
           </motion.div>
 
           {/* Right Content - Profile Image & Stats */}
@@ -230,7 +233,7 @@ export function Hero() {
             <div className="relative">
               {/* Glow effect background */}
               <motion.div
-                className="absolute -inset-8 bg-gradient-to-br from-blue-400/30 via-purple-400/30 to-pink-400/30 dark:from-blue-600/20 dark:via-purple-600/20 dark:to-pink-600/20 bw:from-gray-300/20 bw:via-gray-400/20 bw:to-gray-500/20 rounded-3xl blur-3xl"
+                className="absolute -inset-8 bg-gradient-to-br from-blue-400/30 via-purple-400/30 to-pink-400/30 dark:from-blue-600/20 dark:via-purple-600/20 dark:to-pink-600/20 rounded-3xl blur-3xl"
                 animate={{
                   scale: [1, 1.1, 1],
                   rotate: [0, 5, -5, 0],
@@ -244,14 +247,20 @@ export function Hero() {
 
               {/* Image Container */}
               <motion.div
-                className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(147, 197, 253, 0.3), rgba(196, 181, 253, 0.3), rgba(251, 207, 232, 0.3))",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(255, 255, 255, 0.3)",
-                }}
+                className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl 
+                           bg-gradient-to-br from-blue-200/30 via-purple-200/30 to-pink-200/30
+                           dark:from-blue-900/30 dark:via-purple-900/30 dark:to-pink-900/30
+                           border border-white/30 dark:border-gray-700/50
+                           backdrop-blur-xl"
+                
+                // 1. FIX: REMOVED THE HARDCODED STYLE PROP
+                // style={{
+                //   background:
+                //     "linear-gradient(135deg, rgba(147, 197, 253, 0.3), rgba(196, 181, 253, 0.3), rgba(251, 207, 232, 0.3))",
+                //   backdropFilter: "blur(20px)",
+                //   WebkitBackdropFilter: "blur(20px)",
+                //   border: "1px solid rgba(255, 255, 255, 0.3)",
+                // }}
                 whileHover={{ scale: 1.02, rotate: 1 }}
                 transition={{ duration: 0.4 }}
               >
@@ -267,7 +276,9 @@ export function Hero() {
 
                 {/* Gradient Overlay for better blending */}
                 <div 
-                  className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-transparent to-pink-400/10 pointer-events-none"
+                  className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-transparent to-pink-400/10 
+                             dark:from-blue-400/10 dark:to-pink-400/10
+                             pointer-events-none"
                 />
               </motion.div>
 
@@ -275,15 +286,15 @@ export function Hero() {
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="absolute p-5 rounded-2xl backdrop-blur-xl shadow-xl"
+                  className="absolute p-5 rounded-2xl backdrop-blur-xl 
+                             bg-white/85 dark:bg-[#2a2c2d]/85
+                             border border-white/60 dark:border-[#414345]/80
+                             shadow-xl dark:shadow-[#232526]/50"
                   style={{
-                    background:
-                      "linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85))",
+                    // 3. FIX: REMOVED background, border, and boxShadow from here
                     backdropFilter: "blur(30px)",
                     WebkitBackdropFilter: "blur(30px)",
-                    border:
-                      "1px solid rgba(255, 255, 255, 0.6)",
-                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                    // Keep the positioning logic
                     ...(index === 0 && {
                       top: "15%",
                       right: "-12%",
@@ -303,7 +314,7 @@ export function Hero() {
                 >
                   <div className="text-center min-w-[120px]">
                     <motion.div
-                      className="text-3xl md:text-4xl bg-gradient-to-r from-blue-600 to-purple-600 bw:from-gray-800 bw:to-black bg-clip-text text-transparent"
+                      className="text-3xl md:text-4xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
                       animate={{ scale: [1, 1.05, 1] }}
                       transition={{
                         duration: 2,
@@ -313,7 +324,7 @@ export function Hero() {
                     >
                       {stat.value}
                     </motion.div>
-                    <div className="text-sm text-gray-600 dark:text-gray-700 bw:text-gray-700 mt-1">
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                       {stat.label}
                     </div>
                   </div>
@@ -321,9 +332,9 @@ export function Hero() {
               ))}
             </div>
 
-            {/* Decorative Elements */}
+            {/* Decorative Elements (These were correct) */}
             <motion.div
-              className="absolute -bottom-8 -left-8 w-32 h-32 bg-blue-400/30 dark:bg-blue-500/20 bw:bg-gray-400/20 rounded-full blur-3xl"
+              className="absolute -bottom-8 -left-8 w-32 h-32 bg-blue-400/30 dark:bg-blue-500/20 rounded-full blur-3xl"
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.3, 0.5, 0.3],
@@ -335,7 +346,7 @@ export function Hero() {
               }}
             />
             <motion.div
-              className="absolute -top-8 -right-8 w-40 h-40 bg-purple-400/30 dark:bg-purple-500/20 bw:bg-gray-500/20 rounded-full blur-3xl"
+              className="absolute -top-8 -right-8 w-40 h-40 bg-purple-400/30 dark:bg-purple-500/20 rounded-full blur-3xl"
               animate={{
                 scale: [1, 1.3, 1],
                 opacity: [0.3, 0.6, 0.3],

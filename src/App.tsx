@@ -12,13 +12,13 @@ import { motion } from "motion/react";
 export default function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-blue-950 dark:to-purple-950 blackwhite:from-black blackwhite:via-black blackwhite:to-black transition-colors">
+      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-[#232526] dark:via-[#2d2f30] dark:to-[#414345] transition-colors">
         {/* DevOps Pipeline SVG Animation */}
         <DevOpsPipelineAnimation />
         
         {/* Animated background blobs */}
         <motion.div
-          className="absolute top-0 left-0 w-96 h-96 bg-blue-400/20 dark:bg-blue-600/20 blackwhite:bg-white/10 rounded-full blur-3xl pointer-events-none"
+          className="absolute top-0 left-0 w-96 h-96 bg-blue-400/20 dark:bg-blue-600/20 rounded-full blur-3xl pointer-events-none"
           animate={{
             x: [0, 100, 0],
             y: [0, 50, 0],
@@ -31,7 +31,7 @@ export default function App() {
           }}
         />
         <motion.div
-          className="absolute top-1/2 right-0 w-96 h-96 bg-purple-400/20 dark:bg-purple-600/20 blackwhite:bg-white/15 rounded-full blur-3xl pointer-events-none"
+          className="absolute top-1/2 right-0 w-96 h-96 bg-purple-400/20 dark:bg-purple-600/20 rounded-full blur-3xl pointer-events-none"
           animate={{
             x: [0, -100, 0],
             y: [0, -50, 0],
@@ -44,7 +44,7 @@ export default function App() {
           }}
         />
         <motion.div
-          className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-400/20 dark:bg-pink-600/20 blackwhite:bg-white/20 rounded-full blur-3xl pointer-events-none"
+          className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-400/20 dark:bg-pink-600/20 rounded-full blur-3xl pointer-events-none"
           animate={{
             x: [0, -50, 0],
             y: [0, 100, 0],

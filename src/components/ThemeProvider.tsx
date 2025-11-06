@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "light" | "dark" | "blackwhite";
+type Theme = "light" | "dark";
 
 type ThemeContextType = {
   theme: Theme;
@@ -23,7 +23,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = window.document.documentElement;
 
     // Remove all possible theme classes first
-    root.classList.remove("light", "dark", "blackwhite");
+    root.classList.remove("light", "dark");
 
     // Add the current theme as a class to <html>
     root.classList.add(theme);
@@ -32,13 +32,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // Function to switch between themes in a loop
+  // Function to toggle between light and dark themes
   const cycleTheme = () => {
-    setTheme((prev) => {
-      if (prev === "light") return "dark";
-      if (prev === "dark") return "blackwhite";
-      return "light";
-    });
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
