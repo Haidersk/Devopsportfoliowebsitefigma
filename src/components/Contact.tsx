@@ -1,5 +1,4 @@
 import { Mail, MapPin, Github, Linkedin } from "lucide-react";
-import { LiquidGlass } from "./LiquidGlass";
 import { motion } from "motion/react";
 
 export function Contact() {
@@ -26,32 +25,30 @@ export function Contact() {
           </h2>
         </motion.div>
 
-        <LiquidGlass delay={0.3} className="max-w-md mx-auto p-8">
-          <div className="flex justify-center gap-8">
-            {contactLinks.map((link, index) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                aria-label={link.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.2, 
-                  rotate: [0, -10, 10, -10, 0],
-                  transition: { duration: 0.5 }
-                }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <link.icon className="h-8 w-8" />
-              </motion.a>
-            ))}
-          </div>
-        </LiquidGlass>
+        <div className="flex justify-center gap-8">
+          {contactLinks.map((link, index) => (
+            <motion.a
+              key={link.label}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+              aria-label={link.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ 
+                scale: 1.2, 
+                rotate: [0, -10, 10, -10, 0],
+                transition: { duration: 0.5 }
+              }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <link.icon className="h-8 w-8" />
+            </motion.a>
+          ))}
+        </div>
       </div>
     </section>
   );
