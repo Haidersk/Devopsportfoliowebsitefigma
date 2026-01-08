@@ -22,12 +22,13 @@ export function Header() {
 
   return (
     <motion.header 
-      className="fixed top-0 left-0 right-0 z-50 border-b dark:border-[#414345]"
+      className="fixed top-0 left-0 right-0 z-50 border-b border-white/20 dark:border-gray-800"
       style={{
-        background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))",
+        background: theme === "dark" 
+          ? "rgba(0, 0, 0, 0.95)" 
+          : "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
       }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}

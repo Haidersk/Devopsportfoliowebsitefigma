@@ -12,7 +12,7 @@ import { motion } from "motion/react";
 export default function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-[#232526] dark:via-[#2d2f30] dark:to-[#414345] transition-colors">
+      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-black dark:via-black dark:to-black transition-colors">
         {/* DevOps Pipeline SVG Animation */}
         <DevOpsPipelineAnimation />
         

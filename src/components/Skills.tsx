@@ -32,25 +32,25 @@ export function Skills() {
       id: "containers",
       title: "Containers & Orchestration",
       icon: Container,
-      skills: ["Docker", "Kubernetes", "Helm", "Docker Swarm", "ECS"],
+      skills: ["Docker", "Kubernetes", "ECS"],
     },
     {
       id: "cicd",
       title: "CI/CD",
       icon: GitBranch,
-      skills: ["Jenkins", "GitLab CI", "GitHub Actions", "CircleCI", "ArgoCD"],
+      skills: ["Jenkins", "GitLab CI", "GitHub Actions"],
     },
     {
       id: "iac",
       title: "Infrastructure as Code",
       icon: Code,
-      skills: ["Terraform", "Ansible", "CloudFormation", "Pulumi", "Chef"],
+      skills: ["Terraform", "Ansible", "CloudFormation"],
     },
     {
       id: "monitoring",
       title: "Monitoring & Logging",
       icon: Gauge,
-      skills: ["Prometheus", "Grafana", "ELK Stack", "Datadog", "New Relic"],
+      skills: ["Prometheus", "Grafana", "Datadog"],
     },
     {
       id: "security",
@@ -68,7 +68,7 @@ export function Skills() {
       id: "cloud",
       title: "Cloud Services",
       icon: Cloud,
-      skills: ["AWS", "Azure", "Google Cloud", "DigitalOcean", "Heroku"],
+      skills: ["AWS", "Azure", "Google Cloud"],
     },
   ];
 

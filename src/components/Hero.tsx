@@ -11,6 +11,7 @@ import {
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import profileImage from "figma:asset/ab102c8ae3b1e8c540fc805a93a01e7e0434e570.png";
+import { useState, useEffect } from "react";
 
 export function Hero() {
   const scrollToContact = () => {
@@ -19,6 +20,39 @@ export function Hero() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // Continuous Typewriter effect for DevOps Engineer
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const fullText = "DevOps Engineer";
+  
+  useEffect(() => {
+    const typeSpeed = 100; // Typing speed
+    const deleteSpeed = 50; // Deleting speed
+    const pauseTime = 2000; // Pause before deleting
+    
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (displayedText.length < fullText.length) {
+          setDisplayedText(fullText.slice(0, displayedText.length + 1));
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      } else {
+        // Deleting
+        if (displayedText.length > 0) {
+          setDisplayedText(fullText.slice(0, displayedText.length - 1));
+        } else {
+          // Finished deleting, start typing again
+          setIsDeleting(false);
+        }
+      }
+    }, isDeleting ? deleteSpeed : typeSpeed);
+    
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting]);
 
   // Floating icons data
   const floatingIcons = [
@@ -40,7 +74,7 @@ export function Hero() {
       className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden min-h-screen flex items-center"
     >
       {/* Gradient Background Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-[#232526] dark:via-[#2d2f30] dark:to-[#414345] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-black dark:via-black dark:to-black pointer-events-none" />
 
       {/* Floating DevOps Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10 dark:opacity-5">
@@ -86,47 +120,68 @@ export function Hero() {
           >
 
             
-            {/* Greeting */}
+            {/* Greeting - Continuous Fade in/out */}
             <motion.div
               className="inline-block"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              animate={{ 
+                opacity: [0.6, 1, 0.6]
+              }}
+              transition={{ 
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             >
               <span className="text-lg md:text-xl text-gray-600 dark:text-gray-400 tracking-wide">
                 Hello, I'm
               </span>
             </motion.div>
 
-            {/* Name with Gradient */}
+            {/* Name with Gradient - Continuous Slide + Scale */}
             <div className="space-y-3">
               <motion.h1
                 className="text-6xl md:text-7xl lg:text-8xl text-gray-900 dark:text-white tracking-tight leading-none"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                animate={{ 
+                  y: [0, -5, 0],
+                  scale: [1, 1.02, 1]
+                }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
               >
                 <span className="relative inline-block">
                   Haider Shaikh
-                  {/* Animated underline */}
+                  {/* Animated underline - Continuous pulse */}
                   <motion.span
                     className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400"
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
+                    animate={{ 
+                      width: ["0%", "100%", "100%", "0%"],
+                      opacity: [0, 1, 1, 0]
+                    }}
+                    transition={{ 
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
                   />
                 </span>
               </motion.h1>
 
-              {/* Role with gradient */}
-              <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                DevOps Engineer
-              </motion.h2>
+              {/* Role with Continuous Typewriter effect */}
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent leading-tight min-h-[1.2em]">
+                {displayedText}
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ 
+                    duration: 0.8, 
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="inline-block w-1 h-[0.8em] ml-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400"
+                />
+              </div>
             </div>
 
             {/* Description */}
@@ -136,8 +191,19 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Automating infrastructure, optimizing pipelines,
-              and building reliable systems at scale
+              <motion.span
+                animate={{
+                  opacity: [0.8, 1, 0.8],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                Automating infrastructure, optimizing pipelines,
+                and building reliable systems at scale
+              </motion.span>
             </motion.p>
 
             {/* CTA Buttons */}
@@ -166,7 +232,7 @@ export function Hero() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-lg px-8 py-6 border-2 border-gray-400 dark:border-gray-500 hover:border-blue-600 dark:hover:border-blue-400 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 bg-white/90 dark:bg-white/10 backdrop-blur-sm"
+                  className="text-lg px-8 py-6 border-2 border-gray-400 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 bg-white/90 dark:bg-black/50 backdrop-blur-sm"
                 >
                   <Download className="mr-2" size={20} />
                   Download CV

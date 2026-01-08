@@ -52,8 +52,8 @@
 .dark.card,
 .dark.card-section,
 .dark.feature-card {
-  background: rgba(35, 37, 38, 0.95)!important; /* Dark, 95% opaque fallback */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.98)!important; /* Pitch black, 98% opaque fallback */
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #ffffff!important;
   transition: all 0.3s ease-in-out; /* keeps existing hover animations smooth */
 }
@@ -69,12 +69,12 @@
  .dark.feature-card {
     /* --- FIX 3: TUNED GLASS PROPERTIES --- */
     
-    /* Increased background opacity to provide a stabler platform for text */
-    background: rgba(42, 44, 45, 0.4)!important; /* Was 0.25 */
+    /* Darker background with subtle transparency for pitch black effect */
+    background: rgba(0, 0, 0, 0.85)!important; /* Pure black with 85% opacity */
     
     /* Increased blur to "smear" the complex background, neutralizing variable contrast [5, 6] */
-    backdrop-filter: blur(16px) saturate(180%)!important; /* Was 10px */
-    -webkit-backdrop-filter: blur(16px) saturate(180%)!important;
+    backdrop-filter: blur(20px) saturate(180%)!important; /* Increased blur */
+    -webkit-backdrop-filter: blur(20px) saturate(180%)!important;
   }
 }
 
